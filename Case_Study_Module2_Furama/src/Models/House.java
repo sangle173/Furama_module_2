@@ -20,11 +20,12 @@ public class House extends Service {
         this.otherUtilities = otherUtilities;
         this.noOfFloors = noOfFloors;
     }
-    public House(String[] houseInfo){
+
+    public House(String[] houseInfo) {
         super(houseInfo[0], houseInfo[1], Double.parseDouble(houseInfo[2]), Double.parseDouble(houseInfo[3]), Integer.parseInt(houseInfo[4]), houseInfo[5]);
-        this.roomStandard=houseInfo[6];
-        this.otherUtilities=houseInfo[7];
-        this.noOfFloors=Integer. parseInt(houseInfo[8]);
+        this.roomStandard = houseInfo[6];
+        this.otherUtilities = houseInfo[7];
+        this.noOfFloors = Integer.parseInt(houseInfo[8]);
 
     }
 
@@ -71,5 +72,9 @@ public class House extends Service {
                 " RoomStandard= " + getRoomStandard() + "," +
                 " OtherUtilities= " + getOtherUtilities() + "," +
                 " NoOfFloors= " + getNoOfFloors() + "}";
+    }
+    @Override
+    public int compareTo(Service o) {
+        return this.getServiceName().compareTo(o.getServiceName());
     }
 }

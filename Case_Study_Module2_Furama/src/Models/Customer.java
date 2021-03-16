@@ -1,6 +1,6 @@
 package Models;
 
-public class Customer {
+public class Customer implements Comparable<Customer> {
     private String customerName;
     private String customerBirthDay;
     private String customerGender;
@@ -14,25 +14,40 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String customerName, String customerBirthDay, String customerGender, int customerIdCard, int customerPhone,String customerEmail, String customerType, String customerAddress) {
+    public Customer(String customerName, String customerBirthDay, String customerGender, int customerIdCard, int customerPhone, String customerEmail, String customerType, String customerAddress) {
         this.customerName = customerName;
         this.customerBirthDay = customerBirthDay;
         this.customerGender = customerGender;
         this.customerIdCard = customerIdCard;
-        this.customerPhone=customerPhone;
+        this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerType = customerType;
         this.customerAddress = customerAddress;
     }
-    public Customer(String[] customerInfo){
-        this.customerName=customerInfo[0];
-        this.customerBirthDay=customerInfo[1];
-        this.customerGender=customerInfo[2];
-        this.customerIdCard=Integer.parseInt(customerInfo[3]);
-        this.customerPhone=Integer.parseInt(customerInfo[4]);
-        this.customerEmail=customerInfo[5];
-        this.customerType=customerInfo[6];
-        this.customerAddress=customerInfo[7];
+
+    public Customer(String[] customerInfo) {
+        this.customerName = customerInfo[0];
+        this.customerBirthDay = customerInfo[1];
+        this.customerGender = customerInfo[2];
+        this.customerIdCard = Integer.parseInt(customerInfo[3]);
+        this.customerPhone = Integer.parseInt(customerInfo[4]);
+        this.customerEmail = customerInfo[5];
+        this.customerType = customerInfo[6];
+        this.customerAddress = customerInfo[7];
+    }
+
+
+    public Customer(String customerName, String customerBirthDay, String customerGender, int customerIdCard, int customerPhone, String customerEmail, String customerType,
+                    String customerAddress, Service customerService) {
+        this.customerName = customerName;
+        this.customerBirthDay = customerBirthDay;
+        this.customerGender = customerGender;
+        this.customerIdCard = customerIdCard;
+        this.customerPhone = customerPhone;
+        this.customerEmail = customerEmail;
+        this.customerType = customerType;
+        this.customerAddress = customerAddress;
+        this.customerService = customerService;
     }
 
     public String getCustomerName() {
@@ -109,28 +124,37 @@ public class Customer {
 
     @Override
     public String toString() {
-        String string=customerName+","+
-                customerBirthDay+","+
-                customerGender+","+
-                customerIdCard+","+
-                customerPhone+","+
-                customerEmail+","+
-                customerType+","+
+        String string = customerName + "," +
+                customerBirthDay + "," +
+                customerGender + "," +
+                customerIdCard + "," +
+                customerPhone + "," +
+                customerEmail + "," +
+                customerType + "," +
                 customerAddress;
-        if (customerService!=null){
-            string=string+","+customerService.getServiceId();
+        if (customerService != null) {
+            string = string + "," + customerService.getServiceId();
         }
         return string;
     }
-    public String showInfo(){
+
+    public String showInfo() {
         return "Customer{" +
                 "CustomerName= " + customerName + ",\t" +
-                "CustomerBirthday= " + customerBirthDay +",\t"+
-                "CustomerGender= " + customerGender +",\t"+
-                "CustomerIdCard= " + customerIdCard +",\t"+
-                "CustomerPhone= " + customerPhone +",\t"+
-                "CustomerEmail= " + customerEmail +",\t"+
-                "CustomerType= " + customerType +",\t"+
-                "CustomerAddress= " + customerAddress +"}";
+                "CustomerBirthday= " + customerBirthDay + ",\t" +
+                "CustomerGender= " + customerGender + ",\t" +
+                "CustomerIdCard= " + customerIdCard + ",\t" +
+                "CustomerPhone= " + customerPhone + ",\t" +
+                "CustomerEmail= " + customerEmail + ",\t" +
+                "CustomerType= " + customerType + ",\t" +
+                "CustomerAddress= " + customerAddress + "}";
+    }
+
+    @Override
+    public int compareTo(Customer customer) {
+        if (this.customerName.equals(customer.getCustomerName())) {
+            return (this.customerBirthDay.substring(6, 10)).compareTo(customer.getCustomerBirthDay().substring(6, 10));
+        }
+        return this.customerName.compareTo(customer.getCustomerName());
     }
 }

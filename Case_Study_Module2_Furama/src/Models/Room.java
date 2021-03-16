@@ -15,9 +15,10 @@ public class Room extends Service {
         super(serviceId, serviceName, usingArea, rentalPrice, maxOfCustomer, rentalType);
         this.freeService = freeService;
     }
-    public Room(String[] roomInfo){
+
+    public Room(String[] roomInfo) {
         super(roomInfo[0], roomInfo[1], Double.parseDouble(roomInfo[2]), Double.parseDouble(roomInfo[3]), Integer.parseInt(roomInfo[4]), roomInfo[5]);
-        this.freeService=roomInfo[6];
+        this.freeService = roomInfo[6];
     }
 
     public String getFreeService() {
@@ -43,5 +44,9 @@ public class Room extends Service {
                 " MaxOfCustomer= " + super.getMaxOfCustomer() + " people," +
                 " RentalType= " + super.getRentalType() + "," +
                 " FreeService= " + getFreeService() + "}";
+    }
+    @Override
+    public int compareTo(Service o) {
+        return this.getServiceName().compareTo(o.getServiceName());
     }
 }

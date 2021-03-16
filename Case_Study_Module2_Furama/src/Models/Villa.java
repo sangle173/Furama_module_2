@@ -26,10 +26,10 @@ public class Villa extends Service {
 
     public Villa(String[] villaInfo) {
         super(villaInfo[0], villaInfo[1], Double.parseDouble(villaInfo[2]), Double.parseDouble(villaInfo[3]), Integer.parseInt(villaInfo[4]), villaInfo[5]);
-        this.roomStandard=villaInfo[6];
-        this.otherUtilities=villaInfo[7];
-        this.areaOfPool=Double.parseDouble(villaInfo[8]);
-        this.noOfFloors=Integer.parseInt(villaInfo[9]);
+        this.roomStandard = villaInfo[6];
+        this.otherUtilities = villaInfo[7];
+        this.areaOfPool = Double.parseDouble(villaInfo[8]);
+        this.noOfFloors = Integer.parseInt(villaInfo[9]);
     }
 
     public String getRoomStandard() {
@@ -85,5 +85,10 @@ public class Villa extends Service {
                 " OtherUtilities= " + getOtherUtilities() + "," +
                 " AreaOfPool= " + getAreaOfPool() + "," +
                 " NoOfFloors= " + getNoOfFloors() + "}";
+    }
+
+    @Override
+    public int compareTo(Service o) {
+        return this.getServiceName().compareTo(o.getServiceName());
     }
 }

@@ -1,15 +1,21 @@
-package Views;
+package Controllers;
+
+import Models.Villa;
 
 import java.util.List;
 
 public interface CRUDService<E> {
-    List<E> searchAll();
+    List<E> read();
 
-    E searchById(String id);
+    void show();
 
-    void add(E e);
+    void searchById();
 
-    void edit(E e, String id);
+    List<E> create();
 
-    void remove(String id);
+    void add();
+
+    void update(E e, String id);
+
+    void delete(String id);
 }

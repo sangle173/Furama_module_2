@@ -1,6 +1,6 @@
 package Models;
 
-public abstract class Service {
+public abstract class Service implements Comparable<Service> {
     private String serviceId;
     private String serviceName;
     private double usingArea;
